@@ -1,12 +1,11 @@
 # Android Jetpack Compose Sample App.
 
 
-## Screenshot
+## Portrait View
 
-##Land Scape View 
 <img src="images/port.png" width="250px" />
 
-## Portrait View
+## LandScape View
 <img src="images/land.png" width="750px" />
 
 ## Where To go From here
