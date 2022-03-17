@@ -6,7 +6,7 @@
 ##Land Scape View 
 <img src="images/land.png" width="250px" />
 
-## Portrain View
+## Portrait View
 <img src="images/port.png" width="750px" />
 
 ## Where To go From here
