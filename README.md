@@ -9,9 +9,10 @@
 <img src="images/land.png" width="750px" />
 
 ## Where To go From here
-*   A UI/Material Design sample. The interface of the app is deliberately kept simple to focus on architecture. Check out [Plaid](https://github.com/android/plaid) instead.
-*   A complete Jetpack sample covering all libraries. Check out [Android Sunflower](https://github.com/googlesamples/android-sunflower) or the advanced [Github Browser Sample](https://github.com/googlesamples/android-architecture-components/tree/master/GithubBrowserSample) instead.
-*   A real production app with network access, user authentication, etc. Check out the [Google I/O app](https://github.com/google/iosched), [Santa Tracker](https://github.com/google/santa-tracker-android) or [Tivi](https://github.com/chrisbanes/tivi) for that.
+*   Learning PathWays for jetpack compose  [Google About Jetpack compose](https://developer.android.com/courses/pathways/compose) instead.
+*   Constraint , GuideLines ,  layout management for jetpack Compose [Constraint Layout For Compose](https://proandroiddev.com/getting-started-with-constraint-layout-in-jetpack-compose-48d4e02b76fd) .
+*    Check out the [Google Official ](https://developer.android.com/jetpack/compose/documentation)
+*    Sample Project For jetpack Compose [Compose Samples](https://github.com/android/compose-samples)
 
 
 
