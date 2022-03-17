@@ -76,6 +76,7 @@ fun MyApp() {
                             .clip(CircleShape)
                             .border(1.sdp, Color.Red, CircleShape)
                             .layoutId("imgRef")
+                            .padding(20.dp)
                     )
                     Text(
                         text = "Umer Bilal",
