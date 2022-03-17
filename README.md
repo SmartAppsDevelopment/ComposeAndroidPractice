@@ -3,9 +3,11 @@
 
 ## Screenshot
 
-Main Screenshot|Main Select Lang|Searched Data Results
-:--:|:--:|
-<img src="images/land.png" width="250px" />|<img src="images/port.png" width="750px" />
+##Land Scape View 
+<img src="images/land.png" width="250px" />
+
+## Portrain View
+<img src="images/port.png" width="750px" />
 
 ## Where To go From here
 *   A UI/Material Design sample. The interface of the app is deliberately kept simple to focus on architecture. Check out [Plaid](https://github.com/android/plaid) instead.
