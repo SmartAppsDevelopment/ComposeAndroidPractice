@@ -3,7 +3,7 @@
 
 ## Screenshot
 
-Main Screenshot|Main Select Lang|Searched Data Result
+Main Screenshot|Main Select Lang|Searched Data Results
 :--:|:--:|
 <img src="images/land.jpg" width="250px" />|<img src="images/port.jpg" width="750px" />
 
