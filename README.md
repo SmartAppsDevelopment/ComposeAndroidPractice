@@ -9,7 +9,7 @@ Side Drawer Open |Pop Up Dialog | Navigation Through NavController
 
 ## Portrait View
 
-<img src="images/port.png" width="250px" />
+<img src="images/22.png" width="250px" />
 
 ## LandScape View
 <img src="images/land.png" width="750px" />
