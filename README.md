@@ -1,5 +1,11 @@
 # Android Jetpack Compose Sample App.
 
+## Whole App SS
+Main Landing Screen | Responsive Image View | Gmail Mok Item List
+:--:|:--:|:--:|
+<img src="images/11.png" width="250px" />|<img src="images/22.png" width="250px" />|<img src="images/33.png" width="250px" />
+Side Drawer Open |Pop Up Dialog | Navigation Through NavController
+<img src="images/44.png" width="250px" />|<img src="images/55.png" width="250px" />|<img src="images/66.png" width="250px" />
 
 ## Portrait View
 
