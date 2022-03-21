@@ -10,4 +10,6 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="aboutself">Hello my name is <b>bilal</b>. i am an <u>Android developer </u> having more then years of experience in practical android development  </string>
+    <string name="title_activity_gmail_clone">GmailCloneActivity</string>
+    <string name="title_activity_start">StartActivity</string>
 </resources>

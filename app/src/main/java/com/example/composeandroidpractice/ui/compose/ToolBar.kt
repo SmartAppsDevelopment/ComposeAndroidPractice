@@ -7,11 +7,9 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.Button
-import androidx.compose.material.Card
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.material.*
+import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
@@ -29,96 +27,106 @@ import androidx.constraintlayout.compose.ConstraintSet
 import com.example.composeandroidpractice.R
 import com.example.composeandroidpractice.helper.sdp
 import com.example.composeandroidpractice.helper.textSdp
+import com.example.composeandroidpractice.ui.components.MyAppBar
 
 
 @Preview(showBackground = true)
 @Composable
 fun ArtistCard() {
-    MyApp()
+    MyApp({})
 }
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
-fun MyApp() {
-    Surface(
-        color = Color.LightGray,
-        modifier = Modifier
-            .fillMaxSize(),
-    ) {
-
-        Card(
-            backgroundColor = Color.White, modifier = Modifier
-                .padding(top = 40.sdp, bottom = 40.sdp, start = 16.sdp, end = 16.sdp)
-                .fillMaxSize()
-                .verticalScroll(rememberScrollState())
+fun MyApp(callback:()->Unit) {
+    Scaffold {
+        Surface(
+            color = Color.LightGray,
+            modifier = Modifier
+                .fillMaxSize(),
         ) {
 
-            BoxWithConstraints {
-                // val constraintSet= portraitConstraint(16.dp)
-                val dynamicConstraints = if (minWidth<600.dp) {
-                    portraitConstraint(16.dp)
-                } else {
-                    landScapeConstraint(16.dp)
+            Card(
+                backgroundColor = Color.White, modifier = Modifier
+                    .padding(top = 40.sdp, bottom = 40.sdp, start = 16.sdp, end = 16.sdp)
+                    .fillMaxSize()
+                    .verticalScroll(rememberScrollState())
+            ) {
+
+                var nameState by rememberSaveable {
+                    mutableStateOf("Umer Bilal")
                 }
-              // val dynamicConstraints = portraitConstraint(16.dp)
-                ConstraintLayout(
-                    constraintSet = dynamicConstraints
-                    //                horizontalAlignment = Alignment.CenterHorizontally,
-                    //                verticalArrangement = Arrangement.Center
-                ) {
+                BoxWithConstraints {
+                    // val constraintSet= portraitConstraint(16.dp)
+                    val dynamicConstraints = if (minWidth < 600.dp) {
+                        portraitConstraint(16.dp)
+                    } else {
+                        landScapeConstraint(16.dp)
+                    }
+                    // val dynamicConstraints = portraitConstraint(16.dp)
+                    ConstraintLayout(
+                        constraintSet = dynamicConstraints
+                        //                horizontalAlignment = Alignment.CenterHorizontally,
+                        //                verticalArrangement = Arrangement.Center
+                    ) {
 //                    val (imgRef,txtRefName,txtRefCount,rowStats,rowBtn)= createRefs()
 //                    val topGuideline=createGuidelineFromTop(0.1f)
-                    Image(
-                        painter = painterResource(id = R.drawable.man),
-                        contentDescription = "hello this is me ",
-                        modifier = Modifier
-                            .size(100.sdp)
-                            .clip(CircleShape)
-                            .border(1.sdp, Color.Red, CircleShape)
-                            .layoutId("imgRef")
-                            .padding(20.dp)
-                    )
-                    Text(
-                        text = "Umer Bilal",
-                        fontWeight = FontWeight.ExtraBold,
-                        fontSize = 16.textSdp,
-                        modifier = Modifier.layoutId("txtRefName")
-                    )
-                    Text(
-                        text = "Android Developer (Pakistan)",
-                        fontWeight = FontWeight.ExtraLight,
-                        fontSize = 16.textSdp,
-                        modifier = Modifier.layoutId("txtRefCount")
-                    )
-                    Row(
-                        horizontalArrangement = Arrangement.SpaceEvenly,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .layoutId("rowStats")
+                        Image(
+                            painter = painterResource(id = R.drawable.man),
+                            contentDescription = "hello this is me ",
+                            modifier = Modifier
+                                .size(100.sdp)
+                                .clip(CircleShape)
+                                .border(1.sdp, Color.Red, CircleShape)
+                                .layoutId("imgRef")
+                                .padding(20.dp)
+                        )
+                        Text(
+                            text = "Hello $nameState",
+                            fontWeight = FontWeight.ExtraBold,
+                            fontSize = 16.textSdp,
+                            modifier = Modifier.layoutId("txtRefName")
+                        )
+                        Text(
+                            text = "Android Developer (Pakistan)",
+                            fontWeight = FontWeight.ExtraLight,
+                            fontSize = 16.textSdp,
+                            modifier = Modifier.layoutId("txtRefCount")
+                        )
+                        Row(
+                            horizontalArrangement = Arrangement.SpaceEvenly,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .layoutId("rowStats")
 
-                    ) {
-                        addColumnItem(textNo = "100", text = "Follower")
-                        addColumnItem(textNo = "123", text = "Following")
-                        addColumnItem(textNo = "80", text = "Posts")
-                    }
+                        ) {
+                            addColumnItem(textNo = "100", text = "Follower")
+                            addColumnItem(textNo = "123", text = "Following")
+                            addColumnItem(textNo = "80", text = "Posts")
+                        }
 
-                    Row(
-                        horizontalArrangement = Arrangement.SpaceEvenly,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .layoutId("rowBtn")
-                    ) {
-                        Button(onClick = { /*TODO*/ }) {
-                            Text(text = "Create Post")
+                        Row(
+                            horizontalArrangement = Arrangement.SpaceEvenly,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .layoutId("rowBtn")
+                        ) {
+                            Button(onClick = callback) {
+                                Text(text = "Create Post")
+                            }
+                            Button(onClick = { /*TODO*/ }) {
+                                Text(text = "Direct Messge")
+                            }
                         }
-                        Button(onClick = { /*TODO*/ }) {
-                            Text(text = "Direct Messge")
-                        }
+                        TextField(value = nameState, onValueChange = {
+                            nameState = it
+                        }, modifier = Modifier.layoutId("txtField"))
                     }
                 }
             }
         }
     }
+
 
 }
 
@@ -139,7 +147,9 @@ private fun portraitConstraint(marginReq: Dp): ConstraintSet {
         val txtRefCount = createRefFor("txtRefCount")
         val rowStats = createRefFor("rowStats")
         val rowBtn = createRefFor("rowBtn")
-        val topGuideline = createGuidelineFromTop(0.2f)
+        val txtField = createRefFor("txtField")
+        val topGuideline = createGuidelineFromTop(0.1f)
+        val bottomGuideline = createGuidelineFromBottom(0.1f)
         constrain(imgRef) {
             top.linkTo(topGuideline)
             start.linkTo(parent.start)
@@ -165,6 +175,12 @@ private fun portraitConstraint(marginReq: Dp): ConstraintSet {
             start.linkTo(parent.start)
             end.linkTo(parent.end)
         }
+        constrain(txtField) {
+            top.linkTo(rowBtn.bottom, margin = marginReq)
+            start.linkTo(parent.start)
+            end.linkTo(parent.end)
+            bottom.linkTo(bottomGuideline)
+        }
     }
 }
 
@@ -175,7 +191,8 @@ private fun landScapeConstraint(marginReq: Dp): ConstraintSet {
         val txtRefCount = createRefFor("txtRefCount")
         val rowStats = createRefFor("rowStats")
         val rowBtn = createRefFor("rowBtn")
-        val topGuideline = createGuidelineFromTop(0.2f)
+        val txtField = createRefFor("txtField")
+        val topGuideline = createGuidelineFromTop(0.1f)
         val bottomGuideline = createGuidelineFromBottom(0.2f)
         constrain(imgRef) {
             top.linkTo(topGuideline)
@@ -204,11 +221,20 @@ private fun landScapeConstraint(marginReq: Dp): ConstraintSet {
             top.linkTo(rowStats.bottom, margin = marginReq)
             start.linkTo(parent.start)
             end.linkTo(parent.end)
+            bottom.linkTo(txtField.top)
+        }
+        constrain(txtField) {
+            top.linkTo(rowBtn.bottom, margin = marginReq)
+            start.linkTo(parent.start)
+            end.linkTo(parent.end)
             bottom.linkTo(bottomGuideline)
         }
-        createHorizontalChain(imgRef,txtRefName, chainStyle = ChainStyle.Packed)
-        createHorizontalChain(imgRef,txtRefCount, chainStyle = ChainStyle.Packed)
-       /// createVerticalChain(imgRef,txtRefName, chainStyle = ChainStyle.Packed)
+
+        createHorizontalChain(imgRef, txtRefName, chainStyle = ChainStyle.Packed)
+
+        createHorizontalChain(imgRef, txtRefCount, chainStyle = ChainStyle.Packed)
+
+    /// createVerticalChain(imgRef,txtRefName, chainStyle = ChainStyle.Packed)
     }
 }
 

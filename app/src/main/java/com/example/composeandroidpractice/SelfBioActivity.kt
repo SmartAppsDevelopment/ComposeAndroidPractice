@@ -1,5 +1,6 @@
 package com.example.composeandroidpractice
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -27,6 +28,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.composeandroidpractice.ui.compose.GmailCloneActivity
 import com.example.composeandroidpractice.ui.compose.MyApp
 import com.example.composeandroidpractice.ui.theme.ComposeAndroidPracticeTheme
 
@@ -34,7 +36,7 @@ class SelfBioActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent{
-            MyApp()
+            MyApp { startActivity(Intent(this, GmailCloneActivity::class.java)) }
         }
 //        setContent {
 //            ComposeAndroidPracticeTheme {
@@ -107,71 +109,7 @@ class SelfBioActivity : ComponentActivity() {
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun showDefaultPreview() {
-    ComposeAndroidPracticeTheme {
-        Surface(
-            color = Color.LightGray, modifier = Modifier
-                .fillMaxWidth()
-                .wrapContentHeight()
-        ) {
-            Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(8.dp)
-            ) {
 
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth(), verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Image(
-                        painter = painterResource(id = R.drawable.man),
-                        contentDescription = "This is sample practice",
-                        modifier = Modifier
-                            .size(100.dp)
-                            .clip(
-                                CircleShape
-                            )
-                    )
-                    Column(
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        verticalArrangement = Arrangement.SpaceAround
-                    ) {
-                        Text(text = "Umer Bilal", fontSize = 22.sp, modifier = getFillWidthSpace())
-                        Spacer(modifier = Modifier.size(6.dp))
-                        Text(
-                            modifier = getFillWidthSpace(),
-                            text = "Android Developer",
-                            fontSize = 16.sp
-                        )
-                    }
-                }
-                AddTitle(title = "About")
-
-                Text(
-                    fontSize = 16.sp,
-                    text = (stringResource(R.string.aboutself)).repeat(6),
-                    modifier = getFillWidthSpace()
-                )
-
-                AddTitle(title = "Education ")
-
-                AddColumnCouple(rtext = "Matric", ltext = "From Rawalpindi")
-
-                AddColumnCouple(rtext = "Inter", ltext = "From Rawalpindi")
-
-                AddColumnCouple(rtext = "Graduation", ltext = "From Islamabad")
-
-                AddTitle(title = "Skill Set ")
-
-                LazyRowItemsDemo()
-            }
-
-        }
-    }
-}
 
 fun getFillWidthSpace(): Modifier {
     return Modifier.fillMaxWidth()
